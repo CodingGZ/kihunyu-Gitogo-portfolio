@@ -341,11 +341,12 @@ p {
 .hero h1 {
   font-size: clamp(2.1rem, 3.2vw + 1rem, 3.1rem);
   letter-spacing: -0.03em;
+  color: #ffffff;
   animation: fadeInUp 0.9s ease-out 0.1s backwards;
 }
 
 .tagline {
-  color: var(--muted);
+  color: #e5e7eb;
   margin-top: 0.5rem;
 }
 
@@ -1271,11 +1272,12 @@ p {
 .hero h1 {
   font-size: clamp(2.1rem, 3.2vw + 1rem, 3.1rem);
   letter-spacing: -0.03em;
+  color: #ffffff;
   animation: fadeInUp 0.9s ease-out 0.1s backwards;
 }
 
 .tagline {
-  color: var(--muted);
+  color: #e5e7eb;
   margin-top: 0.5rem;
 }
 
@@ -1813,6 +1815,8 @@ p {
 /* Smooth transitions for all interactive elements */
 button, a, input, textarea, select {
   transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+
 
 
 
