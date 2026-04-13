@@ -1,7 +1,34 @@
-// ===== Smooth scroll for in-page nav links =====
-const navLinks = document.querySelectorAll('nav a[href^="#"], .hero-actions a[href^="#"]');
+// ===== Mobile hamburger menu toggle =====
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
 
-navLinks.forEach(link => {
+if (hamburger) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Close menu when a link is clicked
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      hamburger.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+  });
+}
+
+// ===== Smooth scroll for in-page nav links =====
+const navAnchors = document.querySelectorAll('nav a[href^="#"], .hero-actions a[href^="#"]');
+
+navAnchors.forEach(link => {
   link.addEventListener('click', event => {
     event.preventDefault();
     const targetId = link.getAttribute('href');
