@@ -1,50 +1,54 @@
-// ===== Mobile hamburger menu - Modern implementation =====
+// ===== Mobile hamburger menu and navigation =====
 document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('navLinks');
-  const menuLinks = navMenu ? navMenu.querySelectorAll('a') : [];
 
-  // Toggle menu on hamburger click
-  if (hamburger) {
-    hamburger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      hamburger.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
+  if (!hamburger || !navMenu) {
+    console.warn('Navigation elements not found');
+    return;
   }
 
+  // Toggle menu on hamburger click
+  hamburger.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
   // Close menu when a link is clicked
+  const menuLinks = navMenu.querySelectorAll('a');
   menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      hamburger?.classList.remove('active');
-      navMenu?.classList.remove('active');
+    link.addEventListener('click', function() {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('active');
     });
   });
 
   // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('nav') && hamburger?.classList.contains('active')) {
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('nav') && hamburger.classList.contains('active')) {
       hamburger.classList.remove('active');
-      navMenu?.classList.remove('active');
+      navMenu.classList.remove('active');
     }
   });
-});
 
-// ===== Smooth scroll for in-page nav links =====
-document.addEventListener('DOMContentLoaded', function() {
-  const scrollLinks = document.querySelectorAll('nav a[href^="#"], .hero-actions a[href^="#"]');
+  // Smooth scroll for all navigation links
+  const allLinks = document.querySelectorAll('nav a[href^="#"], .hero-actions a[href^="#"]');
   
-  scrollLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href');
-      const targetEl = document.querySelector(targetId);
-      
-      if (targetEl) {
-        targetEl.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
+  allLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        const targetEl = document.querySelector(href);
+        
+        if (targetEl) {
+          targetEl.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       }
     });
   });
