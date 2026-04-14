@@ -206,7 +206,7 @@ body::before {
 }
 
 .section {
-  padding: 4rem 0;
+  padding: 5.5rem 0;
   position: relative;
   z-index: 1;
 }
@@ -214,7 +214,7 @@ body::before {
 .section > .container {
   background: linear-gradient(135deg, rgba(26, 37, 24, 0.6) 0%, rgba(26, 37, 24, 0.45) 100%);
   border-radius: 1.25rem;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2.5rem;
   border: 1px solid rgba(62, 204, 113, 0.25);
   box-shadow: 0 16px 40px rgba(15, 20, 16, 0.5);
   backdrop-filter: blur(12px);
@@ -228,7 +228,7 @@ body::before {
 .section.alt > .container {
   background: linear-gradient(135deg, rgba(26, 37, 24, 0.7) 0%, rgba(26, 37, 24, 0.55) 100%);
   border-radius: 1.25rem;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2.5rem;
   border: 1px solid rgba(62, 204, 113, 0.3);
   box-shadow: 0 20px 45px rgba(15, 20, 16, 0.6);
   backdrop-filter: blur(14px);
@@ -808,16 +808,27 @@ p {
 }
 
 .info-card ul li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
   line-height: 1.6;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.info-card ul li::before {
+  content: '◆';
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 900;
+  flex-shrink: 0;
 }
 
 /* Pillars */
 .pillars-grid {
   display: grid;
-  gap: 1.4rem;
-  margin-top: 1.3rem;
+  gap: 1.8rem;
+  margin-top: 2rem;
 }
 
 @media (min-width: 900px) {
@@ -842,8 +853,8 @@ p {
 
 .pillar {
   background: linear-gradient(135deg, rgba(62, 204, 113, 0.15) 0%, rgba(26, 37, 24, 0.8) 100%);
-  border-radius: 0.9rem;
-  padding: 1.5rem;
+  border-radius: 1rem;
+  padding: 2rem 1.8rem;
   border: 1.5px solid rgba(62, 204, 113, 0.35);
   box-shadow: 0 20px 45px rgba(15, 20, 16, 0.8), inset 0 0 20px rgba(62, 204, 113, 0.05);
   font-size: 0.9rem;
@@ -851,6 +862,9 @@ p {
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 .pillar::before {
@@ -877,11 +891,22 @@ p {
 }
 
 .pillar h3 {
-  font-size: 1rem;
-  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+  margin-top: 0;
   color: #ffffff;
   font-weight: 700;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pillar h3::before {
+  content: '✦';
+  color: var(--accent);
+  font-size: 1.2rem;
+  flex-shrink: 0;
 }
 
 .pillar p {
@@ -1036,7 +1061,7 @@ p {
 .section h2 {
   font-size: 1.5rem;
   letter-spacing: -0.02em;
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.4rem;
   animation: slideInLeft 0.8s ease-out;
   color: #ffffff;
   font-weight: 700;
@@ -1048,7 +1073,7 @@ p {
   color: #c0e6d1;
   font-size: 0.95rem;
   line-height: 1.8;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
@@ -1100,6 +1125,18 @@ p {
     font-size: 1.2rem !important;
   }
 
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section > .container {
+    padding: 2.2rem 1.8rem;
+  }
+
+  .section.alt > .container {
+    padding: 2.2rem 1.8rem;
+  }
+
   .hero-inner {
     gap: 1.5rem;
   }
@@ -1143,6 +1180,15 @@ p {
 
   .hero-meta span {
     min-width: 75px;
+  }
+
+  .section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .pillars-grid {
+    gap: 1.4rem;
+    margin-top: 1.5rem;
   }
 }
 
