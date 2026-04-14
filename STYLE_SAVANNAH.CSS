@@ -151,6 +151,28 @@ body::before {
   }
 }
 
+@keyframes portraitFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.98) translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes frameGlow {
+  0%, 100% {
+    border-color: rgba(62, 204, 113, 0.15);
+    box-shadow: 0 0 15px rgba(62, 204, 113, 0);
+  }
+  50% {
+    border-color: rgba(62, 204, 113, 0.3);
+    box-shadow: 0 0 25px rgba(62, 204, 113, 0.1);
+  }
+}
+
 /* Intersection observer animations */
 .animate-on-scroll {
   opacity: 1;
@@ -464,6 +486,54 @@ p {
   color: transparent;
 }
 
+/* Professional Portrait */
+.hero-portrait {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.portrait-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  box-shadow:
+    0 20px 50px rgba(15, 20, 16, 0.8),
+    0 0 0 1px rgba(62, 204, 113, 0.25);
+  border: 1px solid rgba(62, 204, 113, 0.25);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: portraitFadeIn 0.8s ease-out;
+}
+
+.portrait-frame {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 20px);
+  max-width: 320px;
+  height: calc(100% + 20px);
+  border: 2px solid rgba(62, 204, 113, 0.2);
+  border-radius: 12px;
+  pointer-events: none;
+  animation: frameGlow 5s ease-in-out infinite;
+}
+
+.portrait-image:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 28px 70px rgba(62, 204, 113, 0.2),
+    0 0 0 1px rgba(62, 204, 113, 0.4);
+  border-color: rgba(62, 204, 113, 0.4);
+}
+
 .hero-meta {
   list-style: none;
   padding: 0;
@@ -760,6 +830,14 @@ p {
   .pillars-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .portrait-image {
+    max-width: 280px;
+  }
+
+  .portrait-frame {
+    max-width: 296px;
+  }
 }
 
 .pillar {
@@ -1020,6 +1098,51 @@ p {
     bottom: 20px !important;
     right: 20px !important;
     font-size: 1.2rem !important;
+  }
+
+  .hero-inner {
+    gap: 1.5rem;
+  }
+
+  .hero-text {
+    order: 2;
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-card {
+    order: 1;
+    padding: 1.2rem 1rem;
+    background: linear-gradient(135deg, rgba(26, 42, 30, 0.8) 0%, rgba(26, 37, 24, 0.6) 100%);
+  }
+
+  .hero-portrait {
+    margin-bottom: 1rem;
+  }
+
+  .portrait-image {
+    max-width: 260px;
+    border-radius: 6px;
+  }
+
+  .portrait-frame {
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 276px;
+    border-radius: 10px;
+    border-width: 1px;
+  }
+
+  .hero-meta {
+    font-size: 0.8rem;
+  }
+
+  .hero-meta li {
+    padding: 0.25rem 0;
+  }
+
+  .hero-meta span {
+    min-width: 75px;
   }
 }
 
